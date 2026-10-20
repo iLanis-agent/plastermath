@@ -35,17 +35,18 @@ function _lead(p) {
 
 function amountTruth(area, thick, rate, coats) {
   var p = _in(area, thick, rate, coats), n = p.a * p.t * p.r * p.c;      // kg times 1000
-  return _lead(p) + ", needs " + _dec(_hu(n, 10), 2) + " kg.";
+  return _lead(p) + ", needs " + (_hu(n, 10) === 0 ? "under 0.01 kg" : _dec(_hu(n, 10), 2) + " kg") + ".";
 }
 function bagsTruth(area, thick, rate, coats, bagKg) {
   var p = _in(area, thick, rate, coats), b = _w(bagKg, _BAG, 1, 50), n = p.a * p.t * p.r * p.c;
   var bags = Math.floor((n + 1000 * b - 1) / (1000 * b));
   var left = bags * b * 1000 - n;                                          // kg times 1000
-  var lead = "The " + _dec(_hu(n, 10), 2) + " kg comes to " + bags + (bags === 1 ? " bag" : " bags") + " of " + b + " kg";
+  var head = _hu(n, 10) === 0 ? "The plaster, under 0.01 kg, comes to " : "The " + _dec(_hu(n, 10), 2) + " kg comes to ";
+  var lead = head + bags + (bags === 1 ? " bag" : " bags") + " of " + b + " kg";
   if (left === 0) return lead + ", with nothing left over.";
   return lead + ", with " + _dec(_hu(left, 10), 2) + " kg left over.";
 }
 function coverTruth(bagKg, thick, rate) {
   var b = _w(bagKg, _BAG, 1, 50), t = _t(thick, _THICK, 1, 500), r = _t(rate, _RATE, 1, 50);
-  return "A " + b + " kg bag at a label rate of " + _dec(r, 1) + " kg per m² per mm covers " + _dec(_hu(b * 1000, r * t), 1) + " m² one coat " + _dec(t, 1) + " mm thick.";
+  return "A " + b + " kg bag at a label rate of " + _dec(r, 1) + " kg per m² per mm covers " + (_hu(b * 1000, r * t) === 0 ? "under 0.1" : _dec(_hu(b * 1000, r * t), 1)) + " m² one coat " + _dec(t, 1) + " mm thick.";
 }
