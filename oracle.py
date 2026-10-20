@@ -28,17 +28,23 @@ def lead(a, t, r, c):
 
 def amount(a, t, r, c):
     A, T, R, C = inputs(a, t, r, c)
-    return lead(A, T, R, C) + f", needs {txt(A * T * R * C, 2)} kg."
+    s = txt(A * T * R * C, 2)
+    shown = "under 0.01 kg" if s == "0" else s + " kg"
+    return lead(A, T, R, C) + f", needs {shown}."
 def bags(a, t, r, c, b):
     A, T, R, C = inputs(a, t, r, c); B = whole(b, BAG, 1, 50)
     kg = A * T * R * C; n = 0
     while n * B < kg: n += 1
     left = n * B - kg
-    s = f"The {txt(kg,2)} kg comes to {n} bag{'' if n == 1 else 's'} of {B} kg"
+    tk = txt(kg, 2)
+    head = "The plaster, under 0.01 kg, comes to " if tk == "0" else f"The {tk} kg comes to "
+    s = head + f"{n} bag{'' if n == 1 else 's'} of {B} kg"
     return s + (", with nothing left over." if left == 0 else f", with {txt(left,2)} kg left over.")
 def cover(b, t, r):
     B = whole(b, BAG, 1, 50); T = dec(t, THICK, "0.1", "50"); R = dec(r, RATE, "0.1", "5")
-    return f"A {B} kg bag at a label rate of {txt(R,1)} kg per m² per mm covers {txt(B / (R * T), 1)} m² one coat {txt(T,1)} mm thick."
+    ar = txt(B / (R * T), 1)
+    shown = "under 0.1" if ar == "0" else ar
+    return f"A {B} kg bag at a label rate of {txt(R,1)} kg per m² per mm covers {shown} m² one coat {txt(T,1)} mm thick."
 
 FNS = {"amountTruth": amount, "bagsTruth": bags, "coverTruth": cover}
 
