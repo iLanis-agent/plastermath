@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plaster Math - wall plaster amount arithmetic</title>
+<style>
+  :root { --accent:#8a5a2b; --ink:#2e1d0c; --paper:#faf6f0; --soft:#efe3d2; }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:Georgia, "Times New Roman", serif; background:var(--paper); color:var(--ink); line-height:1.55; }
+  main { max-width:660px; margin:0 auto; }
+  .boundary { background:#fdeaea; border-left:6px solid #b03030; color:#5c1c1c; border-radius:6px; padding:1rem 1.1rem; }
+  .boundary strong { display:block; margin-bottom:.3rem; }
+  body { padding:2.5rem 1.2rem; }
+  h1 { font-size:2.2rem; color:var(--accent); }
+  p.lede { font-size:1.12rem; margin:.9rem 0 1.6rem; }
+  .boundary { margin-bottom:1.6rem; }
+  section { background:var(--soft); border-left:5px solid var(--accent); border-radius:6px; padding:1.1rem 1.2rem; margin-bottom:1.2rem; }
+  h2 { font-size:1.18rem; margin-bottom:.5rem; }
+  section p { font-size:.98rem; }
+  a.btn { display:inline-block; margin-top:1.4rem; background:var(--accent); color:#fff; text-decoration:none; padding:.8rem 1.6rem; border-radius:999px; font-size:1.05rem; }
+  footer { margin-top:2.2rem; font-size:.85rem; color:#8f7653; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Plaster Math</h1>
+  <p class="lede">40 m² at 2 mm a coat with a label rate of 1 kg per m² per mm, in 2 coats, needs 160 kg, which is 7 bags of 25 kg.</p>
+  <div class="boundary">
+    <strong>Boundary: arithmetic only</strong>
+    Plaster Math works out plaster amounts from the numbers you type. The label rate is yours to read off the bag. It has not seen your wall and does not know the surface, the plaster, how thick a coat can go, how it dries, or how much your wall soaks up beyond what you enter, and it gives no verdict that an amount is enough or that a product is right. Every number is your own entry.
+  </div>
+  <p class="lede" style="font-size:1rem">Starting examples: a 40 m² wall in two coats, the bags that needs, and the area one bag covers.</p>
+  <section>
+    <h2>The amount truth</h2>
+    <p>40 m² at 2 mm a coat with a label rate of 1 kg per m² per mm, in 2 coats, needs 160 kg.</p>
+  </section>
+  <section>
+    <h2>The bags truth</h2>
+    <p>The 160 kg comes to 7 bags of 25 kg, with 15 kg left over.</p>
+  </section>
+  <section>
+    <h2>The cover truth</h2>
+    <p>A 25 kg bag at a label rate of 1 kg per m² per mm covers 12.5 m² one coat 2 mm thick.</p>
+  </section>
+  <a class="btn" href="app.html">Work out your plaster</a>
+  <footer>Plaster Math is exact arithmetic over the numbers you enter, nothing more.</footer>
+</main>
+</body>
+</html>
